@@ -1,5 +1,11 @@
 let myLibrary = [];
 
+if (localStorage.getItem("myLibrary") === null) {
+	myLibrary = [];
+} else {
+	myLibrary = JSON.parse(localStorage.getItem("myLibrary"));
+}
+
 function book(title, author, pages, status) {
 	(this.title = title),
 		(this.author = author),
@@ -7,12 +13,9 @@ function book(title, author, pages, status) {
 		(this.status = status);
 }
 
-function addBookToLibrary(booToAdd) {
-	myLibrary.push(booToAdd);
+function addBookToLibrary(bookToAdd) {
+	myLibrary.push(bookToAdd);
 }
-
-console.table(myLibrary);
-console.log(myLibrary[0]);
 
 const bookshelf = document.getElementById("bookshelf");
 const buttons = document.getElementById("buttons");
@@ -44,6 +47,7 @@ const drawBookshelf = () => {
 			bookStatus.innerText = `Status: ${
 				myLibrary[i].status ? "Read" : "Not read"
 			}`;
+			saveItem("myLibrary", myLibrary);
 		});
 		book.appendChild(bookStatus);
 		bookshelf.appendChild(book);
@@ -52,6 +56,7 @@ const drawBookshelf = () => {
 
 const addButton = document.createElement("button");
 addButton.innerText = "Add Book!";
+document.getElementById("bookForm").style.display = "none";
 
 addButton.addEventListener("click", () => {
 	if (document.getElementById("bookForm").style.display === "inline") {
@@ -65,6 +70,10 @@ addButton.style.position = "absolute";
 addButton.style.top = 0;
 addButton.style.left = 0;
 
+const saveItem = (storageName, item) => {
+	localStorage.setItem(`${storageName}`, JSON.stringify(item));
+};
+
 const addBook = document.getElementById("addBook");
 addBook.addEventListener("click", () => {
 	addBookToLibrary({
@@ -73,7 +82,9 @@ addBook.addEventListener("click", () => {
 		pages: document.getElementById("pagesInput").value,
 		status: document.getElementById("statusInput").checked,
 	});
+	saveItem("myLibrary", myLibrary);
 	drawBookshelf();
 });
 
 buttons.appendChild(addButton);
+drawBookshelf();
