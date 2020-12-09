@@ -1,30 +1,32 @@
 {
-  "name": "library",
-  "version": "1.0.0",
-  "description": "Library project for the odin project",
-  "main": "index.html",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/JoaoOliveira85/Library.git"
-  },
-  "keywords": [
-    "library",
-    "odin",
-    "project"
-  ],
-  "author": "João Pedro Oliveira",
-  "license": "CC0-1.0",
-  "bugs": {
-    "url": "https://github.com/JoaoOliveira85/Library/issues"
-  },
-  "homepage": "https://github.com/JoaoOliveira85/Library#readme",
-  "devDependencies": {
-    "eslint": "^7.15.0"
-  },
-  "dependencies": {
-    "eslint-plugin-prettier": "^3.2.0"
-  }
+	"name": "library",
+	"version": "1.0.0",
+	"description": "Library project for the odin project",
+	"main": "index.html",
+	"scripts": {
+		"start": "node index.js",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/JoaoOliveira85/Library.git"
+	},
+	"keywords": [
+		"library",
+		"odin",
+		"project"
+	],
+	"author": "João Pedro Oliveira",
+	"license": "CC0-1.0",
+	"bugs": {
+		"url": "https://github.com/JoaoOliveira85/Library/issues"
+	},
+	"homepage": "https://github.com/JoaoOliveira85/Library#readme",
+	"devDependencies": {
+		"eslint": "^7.15.0"
+	},
+	"dependencies": {
+		"eslint-plugin-prettier": "^3.2.0",
+		"open": "^7.3.0"
+	}
 }
