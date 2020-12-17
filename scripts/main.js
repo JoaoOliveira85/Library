@@ -29,6 +29,17 @@ const drawBookshelf = () => {
 		const book = document.createElement("div");
 		book.id = `bookID${i}`;
 		book.className = "books";
+		const removeBook = document.createElement("div");
+		removeBook.style.position = "relative";
+		removeBook.style.top = "0px";
+		removeBook.style.left = "100%";
+		removeBook.innerText = "X";
+		removeBook.addEventListener("click", () => {
+			myLibrary.splice(1, i);
+			drawBookshelf();
+			saveItem("myLibrary", myLibrary);
+		});
+		book.appendChild(removeBook);
 		const bookTitle = document.createElement("div");
 		bookTitle.innerText = myLibrary[i].title;
 		book.appendChild(bookTitle);
@@ -42,6 +53,7 @@ const drawBookshelf = () => {
 		bookStatus.innerText = `Status: ${
 			myLibrary[i].status ? "Read" : "Not read"
 		}`;
+		bookStatus.style.fontWeight = "bold";
 		bookStatus.addEventListener("click", () => {
 			myLibrary[i].status = !myLibrary[i].status;
 			bookStatus.innerText = `Status: ${
